@@ -2,8 +2,10 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import './App.css';
 import Home from './components/Home/Home';
 import Login from './components/Login/Login';
+import Order from './components/Orders/Order';
 import Register from './components/Register/Register';
 import Main from './layouts/Main';
+import PrivateRoutes from './Routes/PrivateRoutes';
 
 function App() {
   const router = createBrowserRouter([
@@ -14,6 +16,10 @@ function App() {
           {
               path: '/',
               element: <Home></Home>
+          },
+          {
+            path: '/orders',
+            element: <PrivateRoutes><Order></Order></PrivateRoutes>
           },
           {
               path: '/login',
