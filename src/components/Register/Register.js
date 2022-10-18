@@ -1,11 +1,11 @@
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../context/UserContext';
 
 const Register = () => {
 
     const {createUser, googleLogIn} = useContext(AuthContext)
-
+  const navigate = useNavigate()
     const handleOnSubmit = event =>{
         event.preventDefault()
         const form = event.target
@@ -18,6 +18,7 @@ const Register = () => {
             const user = result.user
             console.log(user)
             form.reset()
+            navigate('/')
         })
         .catch(error =>{
             console.error(error)
@@ -28,6 +29,7 @@ const Register = () => {
       .then(result =>{
         const user = result.user
         console.log(user)
+        navigate('/')
       })
       .catch(error =>{
         console.error(error)
